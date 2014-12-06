@@ -1,0 +1,21 @@
+@import url(http://fonts.googleapis.com/css?family=Lato);
+
+div.text_editor_container {
+	padding: 5px;
+	font-family: 'Lato', sans-serif;
+	border: 1px solid #cccccc;
+}
+
+div.text_editor_container div.text_editor_toolbar {
+
+}
+
+div.text_editor_container div.text_editor_toolbar .tool {
+	padding: 5px 10px;
+}
+
+div.text_editor_container div.text_editor_content_area {
+	margin: 5px 0;
+	padding: 5px;
+	border: 1px solid #cccccc;
+}
