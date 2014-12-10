@@ -1,6 +1,6 @@
 var tinyEditor = function (id) {
 	var tools = [
-		{
+		/*{
 			name: 'formatBlock',
 			title: 'Block',
 			command: 'formatBlock',
@@ -11,7 +11,7 @@ var tinyEditor = function (id) {
 			name: 'fontFamily',
 			title: 'Font Family',
 			command: 'fontName',
-			args: 'Arial|Comic Sans|Courier New|Georgia|Trebuchet MS|Times New Roman|Verdana|Lato',
+			args: 'Arial|Comic Sans MS|Courier New|Georgia|Trebuchet MS|Times New Roman|Verdana',
 			action: 'select'
 		},
 		{
@@ -20,7 +20,7 @@ var tinyEditor = function (id) {
 			command: 'fontSize',
 			args: '1|2|3|4|5|6|7',
 			action: 'select'
-		},
+		},*/
 		{
 			name: 'bold',
 			title: '<strong>B</strong>',
@@ -67,6 +67,20 @@ var tinyEditor = function (id) {
 			name: 'alignJustify',
 			title: 'Justify',
 			command: 'justifyFull',
+			args: null,
+			action: 'click'
+		},
+		{
+			name: 'subscript',
+			title: 'x<sub>n</sub>',
+			command: 'subscript',
+			args: null,
+			action: 'click'
+		},
+		{
+			name: 'superscript',
+			title: 'x<sup>n</sup>',
+			command: 'superscript',
 			args: null,
 			action: 'click'
 		},
@@ -137,7 +151,7 @@ var tinyEditor = function (id) {
 			var tool;
 			var actions = tools[i].action.split('|');
 			if (actions.indexOf('click') != -1) {
-				tool = document.createElement('button');
+				tool = document.createElement('div');
 				tool.addEventListener('click', function () {
 					var args = null;
 					if (tools[i].args != null) {
@@ -150,6 +164,7 @@ var tinyEditor = function (id) {
 				});
 
 				tool.innerHTML = tools[i].title;
+				tool.setAttribute('unselectable', 'on');
 			}
 
 			if (actions.indexOf('select') != -1) {
@@ -177,6 +192,10 @@ var tinyEditor = function (id) {
 			toolbar.appendChild(tool);
 		}(i));
 	}
+
+	var clear = document.createElement('div');
+	clear.className = 'text-editor-clear';
+	toolbar.appendChild(clear);
 
 	var contentArea = document.createElement('div');
 	contentArea.className = 'text_editor_content_area';
